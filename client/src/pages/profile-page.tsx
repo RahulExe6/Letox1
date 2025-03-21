@@ -64,23 +64,18 @@ export default function ProfilePage() {
 
       {/* Profile Info */}
       <motion.div
-        className="p-6 pb-8 bg-black" // Changed background to black
+        className="p-6 pb-8 bg-background"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+        <div className="flex flex-col items-center gap-6">
           {/* Avatar */}
           <motion.div
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="relative w-32 h-32 md:w-40 md:h-40 scale-100"
+            className="relative w-32 h-32"
           >
-            <div className="absolute inset-0 rounded-full overflow-hidden">
-              <div className="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-purple-900 to-slate-900 animate-[pulse_4s_ease-in-out_infinite]">
-                <div className="absolute inset-0 bg-[url('/stars.png')] opacity-50"></div>
-              </div>
-            </div>
             <AvatarWithStatus
               src={user.profilePicture}
               username={user.username}
@@ -88,7 +83,7 @@ export default function ProfilePage() {
               isOnline={true}
               size="lg"
               showStatus={false}
-              className="relative z-10 w-full h-full aspect-square rounded-full border-4 border-white/30"
+              className="w-full h-full aspect-square rounded-full border-4 border-white/30"
             />
           </motion.div>
 

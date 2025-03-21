@@ -74,16 +74,15 @@ export default function ProfilePage() {
           <motion.div
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="relative w-32 h-32"
+            className="relative w-40 h-40"
           >
             <AvatarWithStatus
               src={user.profilePicture}
               username={user.username}
-              name={user.name}
               isOnline={true}
               size="lg"
               showStatus={false}
-              className="w-full h-full aspect-square rounded-full border-4 border-white/30"
+              className="w-full h-full aspect-square rounded-full border-4 border-white/30 object-cover"
             />
           </motion.div>
 

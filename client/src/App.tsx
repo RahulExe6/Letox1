@@ -8,12 +8,14 @@ import AuthPage from "@/pages/auth-page";
 import ProfilePage from "@/pages/profile-page";
 import { ProtectedRoute } from "./lib/protected-route";
 import { AuthProvider } from "./hooks/use-auth";
+import ProfileSetup from "@/components/profile/profile-setup"; // Added import
 
 function Router() {
   return (
     <Switch>
       <ProtectedRoute path="/" component={HomePage} />
       <ProtectedRoute path="/profile" component={ProfilePage} />
+      <ProtectedRoute path="/profile-setup" component={ProfileSetup} /> {/* Added route */}
       <Route path="/auth" component={AuthPage} />
       <Route component={NotFound} />
     </Switch>

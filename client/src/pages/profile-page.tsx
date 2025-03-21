@@ -1,4 +1,3 @@
-
 import { useAuth } from "@/hooks/use-auth";
 import { motion } from "framer-motion";
 import AvatarWithStatus from "@/components/ui/avatar-with-status";
@@ -31,7 +30,7 @@ export default function ProfilePage() {
                 isOnline={true}
                 size="lg"
                 showStatus={false}
-                className="w-full h-full rounded-full border-4 border-primary/10 shadow-xl object-cover"
+                className="w-full h-full rounded-full border-4 border-primary/10 shadow-xl object-cover object-center"
               />
             </motion.div>
 

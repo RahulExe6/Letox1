@@ -3,13 +3,12 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Camera, Settings } from "lucide-react";
+import { Loader2, Camera } from "lucide-react";
 import { motion } from "framer-motion";
 import { apiRequest } from "@/lib/queryClient";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -24,7 +23,7 @@ export default function EditProfile() {
   const [profilePicture, setProfilePicture] = useState(defaultAvatar);
   const [showAvatars, setShowAvatars] = useState(false);
 
-  const avatarOptions = Array.from({ length: 9 }, (_, i) => 
+  const avatarOptions = Array.from({ length: 6 }, (_, i) => 
     `https://api.dicebear.com/7.x/micah/svg?seed=${i + 1}`
   );
 
@@ -48,14 +47,13 @@ export default function EditProfile() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="text-muted-foreground">
-          <Settings className="h-5 w-5" />
+        <Button className="w-full max-w-[200px]">
+          Edit Profile
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-md">
+      <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Edit Profile</DialogTitle>
-          <DialogDescription>Update your profile information</DialogDescription>
         </DialogHeader>
         
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -68,7 +66,7 @@ export default function EditProfile() {
               <img 
                 src={profilePicture} 
                 alt="Profile" 
-                className="w-full h-full rounded-full object-cover"
+                className="w-full h-full rounded-full object-cover border-2 border-primary/20"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
                 <Camera className="w-6 h-6 text-white" />
@@ -77,36 +75,30 @@ export default function EditProfile() {
 
             {showAvatars && (
               <motion.div 
-                initial={{ opacity: 0, y: -10 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="grid grid-cols-3 gap-3 p-3 bg-muted rounded-lg"
+                className="grid grid-cols-3 gap-2 p-2 bg-muted rounded-lg"
               >
                 {avatarOptions.map((avatar, index) => (
-                  <motion.img
+                  <div
                     key={index}
-                    src={avatar}
-                    alt={`Avatar option ${index + 1}`}
-                    className={`w-16 h-16 rounded-full cursor-pointer border-2 transition-all ${
-                      profilePicture === avatar ? "border-primary" : "border-transparent"
+                    className={`w-16 h-16 rounded-full cursor-pointer transition-transform hover:scale-110 ${
+                      profilePicture === avatar ? 'ring-2 ring-primary' : ''
                     }`}
-                    onClick={() => {
-                      setProfilePicture(avatar);
-                      setShowAvatars(false);
-                    }}
-                    whileHover={{ scale: 1.1 }}
-                  />
+                    onClick={() => setProfilePicture(avatar)}
+                  >
+                    <img src={avatar} alt="Avatar option" className="w-full h-full rounded-full" />
+                  </div>
                 ))}
               </motion.div>
             )}
 
-            <div className="w-full space-y-2">
-              <Input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Enter your display name"
-                className="w-full"
-              />
-            </div>
+            <Input
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="max-w-xs"
+            />
           </div>
 
           <div className="flex gap-3">

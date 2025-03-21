@@ -32,7 +32,7 @@ export default function ProfilePage() {
                   isOnline={true}
                   size="lg"
                   showStatus={false}
-                  className="!w-40 !h-40 absolute inset-0"
+                  className="w-full h-full object-cover"
                 />
               </motion.div>
 

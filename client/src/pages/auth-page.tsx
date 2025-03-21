@@ -58,7 +58,7 @@ export default function AuthPage() {
     const { confirmPassword, ...registerData } = data;
     try {
       await registerMutation.mutateAsync(registerData);
-      setLocation("/setup");
+      setLocation("/profile-setup");
     } catch (error) {
       // Error will be handled by the mutation
     }

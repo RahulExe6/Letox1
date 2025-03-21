@@ -39,6 +39,7 @@ export default function ProfileSetup() {
   };
 
   const handleSkip = () => {
+    toast({ description: "Welcome! You can update your profile later." });
     setLocation("/");
   };
 

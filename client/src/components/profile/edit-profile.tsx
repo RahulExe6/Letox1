@@ -47,7 +47,7 @@ export default function EditProfile() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className="w-full max-w-[200px]">
+        <Button variant="outline" className="w-full py-5 text-lg font-medium">
           Edit Profile
         </Button>
       </DialogTrigger>
